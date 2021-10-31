@@ -28,11 +28,14 @@ function getGithubProfileInfos() {
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      userName.textContent = data.name
-      githubBio.textContent = data.bio
-      githubLoginName.textContent = data.login
-      document.getElementById("githubHtmlUrl").href = data.html_url
-      document.getElementById("githubAvatar").src = data.avatar_url
+      // using object destructuring 
+      const { name, bio, login, html_url, avatar_url } = data
+
+      userName.textContent = name
+      githubBio.textContent = bio
+      githubLoginName.textContent = login
+      document.getElementById("githubHtmlUrl").href = html_url
+      document.getElementById("githubAvatar").src = avatar_url
       console.log(data)
 
     })
@@ -40,3 +43,16 @@ function getGithubProfileInfos() {
 }
 
 getGithubProfileInfos()
+
+//linked in 
+// function changeSocialMediaLinks() {
+//   for (let li of socialLinks.children) {
+//     const social = li.getAttribute('class')
+
+//      if ((social = 'linkedin')) {
+//        li.children[0].href = https://${social}.com/in/${LinksSocialMedia[social]}
+//     }
+//     li.children[0].href = https://${social}.com/${LinksSocialMedia[social]}
+
+//   }
+// }
